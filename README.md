@@ -53,7 +53,7 @@ Minimal example:
 
 ```text
 data/
-  deepscaler_mix/
+  deepscaler/
     train.parquet
   aime2024/
     test.parquet
@@ -63,6 +63,7 @@ data/
     test.parquet
   math/
     test.parquet
+  
 ```
 
 ## End-to-End Pipeline: Training to Inference
@@ -77,7 +78,12 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 export CHECKPOINT_ROOT=checkpoints
 ```
 
-### Step 2. Run Main DECS Training (Chunk Variant)
+### Step 2. Run Main DECS Training 
+
+Download the NRP DETECTOR from `https://huggingface.co/pixas/DECS_NRP_DETECTOR`, put it at `checkpoints` directory and deploy it via 
+```
+vllm serve --model checkpoints/DECS_NRP_DETECTOR --port 10041 
+```
 
 ```bash
 bash scripts/train/local/train_rl_chunk_local.sh
@@ -87,7 +93,7 @@ Common overrides:
 
 ```bash
 MODEL_NAME=r1_distill_qwen1.5b \
-DATA_NAME="deepscaler_mix" \
+DATA_NAME="deepscaler" \
 ROLLOUT_N=16 \
 CHUNK_JUDGE_URL=127.0.0.1:10041 \
 bash scripts/train/local/train_rl_chunk_local.sh
@@ -99,13 +105,8 @@ Training logs are written to:
 Checkpoints are saved under (controlled by `src_valid/config/ppo_trainer.yaml`):
 - `checkpoints/verl_math/<experiment_name>/global_step_*/actor`
 
-### Step 3. (Optional) Run ThinkPrune Training
 
-```bash
-bash scripts/train/local/train_thinkprune_local.sh
-```
-
-### Step 4. Run Standard Inference/Evaluation (SC)
+### Step 3. Run Standard Inference/Evaluation (SC)
 
 Assume your trained checkpoint is:
 `checkpoints/verl_math/<exp>/global_step_xxx/actor`
@@ -133,7 +134,7 @@ Default dataset in `sc_local.sh` is `math`. To evaluate multiple datasets:
 export DATASETS="aime2024 aime2025 amc23 math"
 ```
 
-### Step 5. Run Prolonged Generation Evaluation
+### Step 4. Run Prolonged Generation Evaluation
 
 ```bash
 bash scripts/eval/local/prolong_gen_local.sh \
@@ -143,7 +144,7 @@ bash scripts/eval/local/prolong_gen_local.sh \
   "--max_new_tokens 32768 --hf_model_path ${HF_MODEL_PATH}"
 ```
 
-### Step 6. Check Output Files
+### Step 5. Check Output Files
 
 Standard SC outputs:
 - `results/<dataset>/<model_name>_sc<k>/cache.jsonl`
