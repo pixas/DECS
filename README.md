@@ -24,20 +24,26 @@ DECS is a training and evaluation framework for reasoning models, with two core 
 
 
 ## Environment Setup
-Use your existing training environment if available. A minimal setup should include:
 
-- Python 3.10+
-- PyTorch (CUDA-compatible)
-- `transformers`
-- `vllm`
-- `pandas`
-- `pyarrow`
-- `tqdm`
 
-Example:
+First create a virtual environment:
 
 ```bash
-pip install torch transformers vllm pandas pyarrow tqdm
+conda create -n verl python=3.10
+conda activate verl
+```
+
+Then install `vllm==0.8.5.post1` via 
+```bash
+export VLLM_VERSION=0.8.5.post1
+export CUDA_VERSION=126 # or other
+export CPU_ARCH=$(uname -m) # x86_64 or aarch64
+uv pip install https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cu${CUDA_VERSION}-cp38-abi3-manylinux_2_35_${CPU_ARCH}.whl --extra-index-url https://download.pytorch.org/whl/cu${CUDA_VERSION}
+```
+
+After that, install verl via 
+```
+pip install -e .
 ```
 
 ## Data Layout

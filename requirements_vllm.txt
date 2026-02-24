@@ -1,0 +1,19 @@
+blake3
+compressed-tensors==0.9.1
+depyf==0.18.0
+fastapi[standard]!=0.113.*,!=0.114.0,>=0.107.0; python_version >= "3.9"
+gguf==0.10.0
+importlib_metadata
+lark==1.2.2
+lm-format-enforcer<0.11,>=0.10.9
+mistral_common[opencv]>=1.5.0
+numba==0.60.0
+openai>=1.52.0
+outlines==0.1.11
+partial-json-parser
+prometheus_client>=0.18.0
+prometheus-fastapi-instrumentator>=7.0.0
+py-cpuinfo
+pyzmq
+sentencepiece
+xformers==0.0.28.post3; platform_system == "Linux" and platform_machine == "x86_64"
