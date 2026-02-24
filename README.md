@@ -47,24 +47,9 @@ pip install -e .
 ```
 
 ## Data Layout
-Training scripts expect `data/<dataset>/train.parquet`, and evaluation scripts expect `data/<dataset>/test.parquet`.
-
-Minimal example:
-
-```text
-data/
-  deepscaler/
-    train.parquet
-  aime2024/
-    test.parquet
-  aime2025/
-    test.parquet
-  amc23/
-    test.parquet
-  math/
-    test.parquet
+We have organized the training data and evaluaion data in the `data` folder. For `LiveCodeBench` dataset, please refer to [here](https://livecodebench.github.io/) for detailed configuration.
   
-```
+
 
 ## End-to-End Pipeline: Training to Inference
 
@@ -84,6 +69,8 @@ Download the NRP DETECTOR from `https://huggingface.co/pixas/DECS_NRP_DETECTOR`,
 ```
 vllm serve --model checkpoints/DECS_NRP_DETECTOR --port 10041 
 ```
+
+After that, run the training script
 
 ```bash
 bash scripts/train/local/train_rl_chunk_local.sh
