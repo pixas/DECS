@@ -137,7 +137,8 @@ class CephOSSClient:
     @proxy_decorator
     def save_checkpoint(self, data, path, **kwargs):
         if "s3://" not in path:
-            assert os.path.exists(path), f'No such file: {path}'
+            dir_name = os.path.dirname(path)
+            assert os.path.exists(dir_name), f'No such file: {dir_name}'
             torch.save(data, path, **kwargs)
         else:
             with io.BytesIO() as f:

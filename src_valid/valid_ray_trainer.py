@@ -1154,6 +1154,7 @@ class ValidRayPPOTrainer(object):
                                                 f'global_step_{self.global_steps}')
 
         print(f'local_global_step_folder: {local_global_step_folder}')
+        os.makedirs(local_global_step_folder, exist_ok=True)
         # save kappa to os.path.join(local_global_step_folder, 'kappa.txt')
         utils_info = {
             "kappa": self.kappa,
