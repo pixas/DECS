@@ -1,10 +1,21 @@
 # DECS
+<p align="center">
+  <a href="https://arxiv.org/abs/2509.25827">
+    <img src="https://img.shields.io/badge/Paper-arXiv-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper (arXiv:2509.25827)">
+  </a>
+  <a href="https://huggingface.co/pixas/DECS_1.5B">
+    <img src="https://img.shields.io/badge/HuggingFace-DECS_1.5B-FFCC4D?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face (DECS 1.5B)">
+  </a>
+  <a href="https://huggingface.co/pixas/DECS_7B">
+    <img src="https://img.shields.io/badge/HuggingFace-DECS_7B-FFCC4D?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face (DECS 7B)">
+  </a>
+  <a href="https://pixas.github.io/decs-iclr26-site/">
+    <img src="https://img.shields.io/badge/Homepage-pixas-1A73E8?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Personal Homepage">
+  </a>
+</p>
+
 Official codebase for the ICLR 2026 Oral paper:
 **Overthinking Reduction with Decoupled Rewards and Curriculum Data Scheduling**
-
-🤗 [Hugging Face (DECS 1.5B release target)](https://huggingface.co/pixas/DECS_1.5B)  
-🤗 [Hugging Face (DECS 7B release target)](https://huggingface.co/pixas/DECS_7B)  
-📄 [Paper (arXiv:2509.25827)](https://arxiv.org/abs/2509.25827)
 
 ## Project Overview
 DECS is a training and evaluation framework for reasoning models, with two core ideas:
